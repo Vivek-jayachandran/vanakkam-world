@@ -1,8 +1,10 @@
 pipeline { 
+ agent any
+ 
  environment{
   registry = "vivekdevopsfree/tom"
   dockerImage= ""
-agent any
+
  tools{
     maven 'mymaven'
  }
@@ -22,9 +24,11 @@ agent any
       
       stage ('Build image') {
           steps {
+           script {
            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+              }
+            }
           }
-      }
   }
  }
 }
