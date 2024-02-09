@@ -33,7 +33,7 @@ pipeline {
         stage('Push image to Docker registry') {
     steps {
         script {
-            docker.withRegistry('https://index.docker.io/v1/', credentialsId: "322f574f-2de4-4835-82f9-476615b381e5") {
+          withDockerRegistry('https://index.docker.io/v1/', credentialsId: "322f574f-2de4-4835-82f9-476615b381e5") {
                 dockerImage.push()
             }
         }
