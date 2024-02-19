@@ -34,7 +34,7 @@ pipeline {
         stage('Push image to Docker registry') {
             steps {
                 script {
-                    withDockerRegistry('https://index.docker.io/v1/', credentialsId: 'tompipeline') {
+                    Docker('https://index.docker.io/v1/', credentialsId: 'tompipeline') {
                         dockerImage.push()
                     }
                 }
